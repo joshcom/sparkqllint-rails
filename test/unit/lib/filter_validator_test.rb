@@ -28,4 +28,19 @@ class FilterValidatorTest < ActiveSupport::TestCase
     v = FilterValidator.new(" #{@good_filter} ")
     assert_equal @good_filter, v.filter_text
   end
+
+  test "parse works with a nil filter" do
+    v = FilterValidator.new(nil)
+    assert !v.errors?
+  end
+
+  test "#errors?" do
+    assert !FilterValidator.new(@good_filter).errors?
+    assert FilterValidator.new("City Is Fargo").errors?
+  end
+
+  test "#errors" do
+    assert !FilterValidator.new(@good_filter).errors?
+    assert FilterValidator.new("City Is Fargo").errors?
+  end
 end
