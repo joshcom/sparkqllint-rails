@@ -1,0 +1,5 @@
+<% if defined?(@flash_type) && @flash_type %>
+  <div class="alert alert-<%= flash[:error] ? "error" : "success" %>">
+    <%= flash[:notice] || flash[:error] %>
+  </div>
+<% end %>

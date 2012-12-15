@@ -1,22 +1,22 @@
+require 'filter_validator'
+
 class LintController < ApplicationController
-  # GET /lints
-  # GET /lints.json
+  before_filter :validate_filter
+
   def index
     respond_to do |format|
-      @lints = []
       format.html # index.html.erb
-      format.json { render json: @lints }
+      # TODO:  I want to make this a webservice as well.
+      # format.json { render json: @filter.to_json }
     end
   end
 
-  # GET /lints/1
-  # GET /lints/1.json
-  def show
-    @lint = nil
+  def validate_filter
+    @filter = FilterValidator.new(params[:_filter])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @lint }
-    end
+    unless @filter.blank?
+      @flash_type = "success"
+      flash[:notice] = "Looks great!"
+    end  
   end
 end

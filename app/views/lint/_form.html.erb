@@ -1,17 +1,7 @@
-<%= form_for(@lint) do |f| %>
-  <% if @lint.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@lint.errors.count, "error") %> prohibited this lint from being saved:</h2>
-
-      <ul>
-      <% @lint.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<form method="GET" name="sparkql-form" action="/">
+  <fieldset>
+    <textarea class="sparkql-input" placeholder="City Eq 'Fargo' And..." name="_filter"><%= @filter.filter_text %></textarea>
+    <span class="help-block">Enter a SparkQL <tt>_filter</tt> string in the box above.</span>
+    <button type="submit" class="btn">Validate</button>
+  </fieldset>
+</form>

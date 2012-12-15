@@ -1,21 +1,2 @@
-<h1>Listing lints</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @lints.each do |lint| %>
-  <tr>
-    <td><%= link_to 'Show', lint %></td>
-    <td><%= link_to 'Edit', edit_lint_path(lint) %></td>
-    <td><%= link_to 'Destroy', lint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Lint', new_lint_path %>
+<%= render :partial => "form" %>
+<%= render :partial => "flash", :locals => {:flash => flash} %>
