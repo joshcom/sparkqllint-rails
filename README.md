@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/joshcom/sparkqllint-rails.png?branch=master)](https://travis-ci.org/joshcom/sparkqllint-rails)
+
 SparkQL Lint
 ============
 A simple Rails app that, when you provide a SparkQL <tt>_filter</tt> string, tells you if it is valid or not.
