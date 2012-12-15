@@ -1,7 +1,7 @@
 <form method="GET" name="sparkql-form" action="/">
   <fieldset>
+    <span class="help-block">Enter a SparkQL <tt>_filter</tt> string in the box below.</span>
     <textarea class="sparkql-input" placeholder="City Eq 'Fargo' And..." name="_filter"><%= @filter.filter_text %></textarea>
-    <span class="help-block">Enter a SparkQL <tt>_filter</tt> string in the box above.</span>
-    <button type="submit" class="btn">Validate</button>
+    <button type="submit" class="btn btn-primary">Validate</button>
   </fieldset>
 </form>
