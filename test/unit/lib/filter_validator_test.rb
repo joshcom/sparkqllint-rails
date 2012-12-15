@@ -40,7 +40,12 @@ class FilterValidatorTest < ActiveSupport::TestCase
   end
 
   test "#errors" do
-    assert !FilterValidator.new(@good_filter).errors?
-    assert FilterValidator.new("City Is Fargo").errors?
+    assert_equal 0, FilterValidator.new(@good_filter).errors.size
+    assert_operator FilterValidator.new("City Is Fargo").errors.size, :>, 0
+  end
+
+  test "#errors with mega nesting" do
+    v = FilterValidator.new("((City Eq 'Fargo' And (State Eq 1 And (City Eq 2 And (State Eq 1)))))")
+    assert v.errors?
   end
 end

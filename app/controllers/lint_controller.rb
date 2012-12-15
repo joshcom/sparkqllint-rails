@@ -12,10 +12,11 @@ class LintController < ApplicationController
   end
 
   def validate_filter
+    flash[:error] = nil
+    flash[:notice] = nil
+
     @filter = FilterValidator.new(params[:_filter])
-
     unless @filter.blank?
-
       if @filter.errors?
         @flash_type = "error"
         flash[:error] = @filter.errors.first.message

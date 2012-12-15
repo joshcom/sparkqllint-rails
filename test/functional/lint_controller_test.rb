@@ -23,4 +23,11 @@ class LintControllerTest < ActionController::TestCase
     assert flash[:error]
     assert !flash[:notice]
   end
+
+  test "mega nesting should show an error" do
+    get :index, :_filter => "((City Eq 'Fargo' And (State Eq 1 And (City Eq 2 And (State Eq 1)))))"
+    assert_response :success
+    assert flash[:error]
+    assert !flash[:notice]
+  end
 end

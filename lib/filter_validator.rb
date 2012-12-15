@@ -22,14 +22,18 @@ class FilterValidator
   end
 
   def parse
+    return if @parsed
     expressions = parser.parse(@filter.to_s)
+    @parsed = true
   end
 
   def errors?
-    !self.parse && self.parser.errors?
+    self.parse 
+    self.parser.errors?
   end
 
   def errors
+    self.parse
     self.parser.errors
   end
 end
