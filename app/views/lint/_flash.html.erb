@@ -1,5 +1,14 @@
 <% if defined?(@flash_type) && @flash_type %>
   <div class="alert alert-<%= flash[:error] ? "error" : "success" %>">
-    <%= flash[:notice] || flash[:error] %>
+    <% if flash[:error] %>
+      <p>
+        <h4>SparkQL is invalid!</h4>
+      </p>
+      <p> <%= flash[:error] %> </p>
+    <% else %>
+      <p>
+        <h4>SparkQL looks great!</h4>
+      </p>
+    <% end %>
   </div>
 <% end %>
